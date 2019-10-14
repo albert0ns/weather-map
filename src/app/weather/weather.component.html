@@ -1,0 +1,48 @@
+<h3>
+{{city}}, {{temp}} &#8451;, latitude: {{latitude}} &  longitude: {{longitude}}<br>
+
+<h3>
+
+<owl-carousel class="carousel slide" [items]="weatherHourList"
+    [options]="{items: 8, dots: false, navigation: false}"
+    [carouselClasses]="['owl-theme', 'row', 'sliding']"
+>
+<div class="item" *ngFor="let weather of weatherHourList; let i = index">
+  <mat-card class="example-card card brand ">
+    <mat-card-header>
+      <img mat-card-image src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png">
+      <mat-card-title class="card-title">{{weather.main.temp}}°</mat-card-title>
+      <mat-card-subtitle class="card-subtitle">+{{i*3+3}} hrs</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="card-body">
+      <p>{{weather.weather[0].description}}</p>
+    </mat-card-content>
+    <mat-card-actions class="card-footer">
+      <button  disabled mat-button>min: {{weather.main.temp_min}}°</button>
+      <button disabled mat-button>max: {{weather.main.temp_max}}°</button>
+    </mat-card-actions>
+  </mat-card>
+</div> 
+
+<!-- <div class="item">
+  <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>
+              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+              bred for hunting.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+</div>-->
+</owl-carousel>
